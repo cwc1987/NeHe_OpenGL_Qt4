@@ -11,7 +11,7 @@
 #define MESH_RESOLUTION 4.0f							// 每个顶点使用的像素
 #define MESH_HEIGHTSCALE 1.0f							// 高度的缩放比例
 //#define NO_VBOS                                         // 如果定义将不使用VBO扩展
-//// 定义VBO扩展它们在glext.h头文件中被定义
+//定义VBO扩展它们在glext.h头文件中被定义
 #define GL_ARRAY_BUFFER_ARB 0x8892
 #define GL_STATIC_DRAW_ARB 0x88E4
 typedef void (APIENTRY * PFNGLBINDBUFFERARBPROC) (GLenum target, GLuint buffer);
