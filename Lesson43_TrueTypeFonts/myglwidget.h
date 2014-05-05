@@ -8,9 +8,9 @@
 #include <QApplication>
 #include <QDebug>
 #include <qmath.h>
-#include "freetype2/ft2build.h"
-#include "freetype2/freetype.h"
-#include "freetype2/ftglyph.h"
+#include <freetype2/ft2build.h>
+#include <freetype2/freetype.h>
+#include <freetype2/ftglyph.h>
 //#include <freetype2/ftoutln.h>
 //#include <freetype2/fttrigon.h>
 
@@ -50,8 +50,6 @@ protected:
     void keyPressEvent(QKeyEvent *event);
 
     void timerEvent(QTimerEvent *event);
-private:
-    void glPrint(GLint x, GLint y, char *string, int set = 0);
 private:
     bool m_show_full_screen;
     freetype::font_data m_our_font;

@@ -13,14 +13,12 @@ TEMPLATE = app
 
 LIBS += libfreetype libz
 
-INCLUDEPATH += freetype2
+#INCLUDEPATH += freetype2
 
 SOURCES += main.cpp\
         myglwidget.cpp
 
 HEADERS  += myglwidget.h
-
-RESOURCES +=
 
 fonts.files += fonts/*
 fonts.path = $$OUT_PWD/debug
