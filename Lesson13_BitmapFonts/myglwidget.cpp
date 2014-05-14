@@ -1,15 +1,7 @@
 ﻿#include "myglwidget.h"
 
-//在OpenGL中使用FreeType库
-//使用FreeType库可以创建非常好看的反走样的字体，记住暴雪公司就是使用这个库的，就是那个做魔兽世界的。
-//尝试一下吧，我只告诉你了基本的使用方式，你可以走的更远。
-
-//在OpenGL中使用FreeType库
-//这里是一个快速的介绍，它告诉你如何在OpenGL中使用FreeType渲染TrueType字体。使用这个库我们可以渲染反走样的文本，
-//它看起来更加的漂亮。
-//创建程序
-//第一步你需要从下面的网站上下载FreeType库：http://gnuwin32.sourceforge.net/packages/freetype.htm
-//接着在你使用它创建一个新的程序时，你需要链接libfreetype.lib库，并包含FreeType的头文件。
+//图像字体:
+//这一课我们将创建一些基于2D图像的字体，它们可以缩放，但不能旋转，并且总是面向前方，但作为基本的显示来说，我想已经够了。
 
 MyGLWidget::MyGLWidget(QWidget *parent) :
     QGLWidget(parent), m_show_full_screen(false), m_cnt1(0.0f)
