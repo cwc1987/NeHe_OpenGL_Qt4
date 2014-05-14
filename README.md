@@ -9,5 +9,8 @@ freetype-2.5.3:http://sourceforge.net/projects/freetype/files/freetype2/2.5.3/
 
 ftgl-2.1.3:http://sourceforge.net/projects/ftgl/files/FTGL%20Source/2.1.3~rc5/
 
+Note: Lesson13,Lesson14,Lesson15,Lesson35,Lesson43 should copy resource file to their execution directory.
+
+Missed Lesson47 CG Vertex Shader, I'm sorry that my computer is ATI card, and maybe it can't used in other platform except windows.
+
 Author:Cai Wancang
-2014.5.14
