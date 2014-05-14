@@ -162,7 +162,6 @@ namespace freetype
         glPopAttrib();
     }
 
-    //我们的print函数和13课的函数非常的像，但在实现上有一些不同。我们实际上是使用2通道的纹理而不是图像。
     // 输出文字
     void print(const font_data &ft_font, float x, float y, const char *fmt, ...)
     {
@@ -179,9 +178,9 @@ namespace freetype
         }
         else
         {
-            va_start(ap, fmt);
-            vsprintf(text, fmt, ap);
-            va_end(ap);
+            va_start(ap, fmt);// 分析可变参数
+            vsprintf(text, fmt, ap);// 把参数值写入字符串
+            va_end(ap);// 结束分析
         }
 
         // 把输入的字符串按回车分割
