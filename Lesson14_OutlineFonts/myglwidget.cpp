@@ -14,6 +14,7 @@ MyGLWidget::MyGLWidget(QWidget *parent) :
 MyGLWidget::~MyGLWidget()
 {
 }
+
 void MyGLWidget::resizeGL(int w, int h)
 {
     if (h==0)										// Prevent A Divide By Zero By
@@ -26,7 +27,7 @@ void MyGLWidget::resizeGL(int w, int h)
     glMatrixMode(GL_PROJECTION);						// Select The Projection Matrix
     glLoadIdentity();									// Reset The Projection Matrix
 
-    // Calculate The Aspect Ratio Of The Window
+                                                // Calculate The Aspect Ratio Of The Window
     gluPerspective(45.0f,(GLfloat)w/(GLfloat)h,0.1f,100.0f);
 
     glMatrixMode(GL_MODELVIEW);							// Select The Modelview Matrix
@@ -61,13 +62,20 @@ void MyGLWidget::initializeGL()
 
 void MyGLWidget::paintGL()
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
-    glLoadIdentity();									// Reset The Current Modelview Matrix
-    glTranslatef(0.0f,0.0f,-10.0f);						// Move One Unit Into The Screen
-    glRotatef(m_rot,1.0f,0.0f,0.0f);						// Rotate On The X Axis
-    glRotatef(m_rot*1.5f,0.0f,1.0f,0.0f);					// Rotate On The Y Axis
-    glRotatef(m_rot*1.4f,0.0f,0.0f,1.0f);					// Rotate On The Z Axis
+    //下面就是画图的代码了。我们从清除屏幕和深度缓存开始。我们调用glLoadIdentity()来重置所有东西。然后我们将坐标系向屏幕里移动十个单位。
+    //轮廓字体在透视图模式下表现非常好。你将文字移入屏幕越深，文字开起来就更小。文字离你越近，它看起来就更大。
+    //也可以使用glScalef(x,y,z)命令来操作轮廓字体。如果你想把字体放大两倍，可以使用glScalef(1.0f,2.0f,1.0f). 2.0f 作用在y轴，
+    //它告诉OpenGL将显示列表的高度绘制为原来的两倍。如果2.0f作用在x轴，那么文本的宽度将变成原来的两倍
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// 清除屏幕及深度缓存
+    glLoadIdentity();// 重置当前的模型观察矩阵
+    glTranslatef(0.0f,0.0f,-10.0f);// 移入屏幕一个单位
+    //在向屏幕里移动以后，我们希望文本能旋转起来。下面3行代码用来在3个轴上旋转屏幕。我将rot乘以不同的数，以便每个方向上的旋转速度不同。
+    glRotatef(m_rot,1.0f,0.0f,0.0f);// X轴旋转
+    glRotatef(m_rot*1.5f,0.0f,1.0f,0.0f);// Y轴旋转
+    glRotatef(m_rot*1.4f,0.0f,0.0f,1.0f);// Z轴旋转
     // Pulsing Colors Based On The Rotation
+    //下面是令人兴奋的颜色循环了。照常，我们使用唯一递增的变量（rot）。颜色通过使用COS和SIN来循环变化。我将rot除以不同的数，
+    //这样每种颜色会以不同的速度递增。最终的效果非常好
     glColor3f(1.0f*float(cos(m_rot/20.0f)),1.0f*float(sin(m_rot/25.0f)),1.0f-0.5f*float(cos(m_rot/17.0f)));
     QString renderText = QString("NeHe - %1").arg(m_rot/50);
     glTranslatef(-3.0,0.0f,0.0f);                           // Center Our Text On The Screen
@@ -107,7 +115,5 @@ void MyGLWidget::timerEvent(QTimerEvent *event)
     QGLWidget::timerEvent(event);
 }
 
-//在这一课中，我已试着尽量详细解释一切。每一步都与设置有关，并创建了一个全屏OpenGL程序。
-//当您按下ESC键程序就会退出，并监视窗口是否激活。
-//如果您有什么意见或建议请给我EMAIL。如果您认为有什么不对或可以改进，请告诉我。
-//我想做最好的OpenGL教程并对您的反馈感兴趣。
+//在这节课结束的时候，你应该已经学会在你的OpenGL程序中使用轮廓字体了。就像第13课，我曾在网上寻找一篇与这一课相似的教程，
+//但是也没有找到。或许我的网站是第一个涉及这个主题同时又把它解释的简单易懂的C代码的网站吧。享用这篇教程，快乐编码！
