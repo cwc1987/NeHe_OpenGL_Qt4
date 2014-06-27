@@ -1,7 +1,7 @@
 NeHe_OpenGL_Qt4
 ===============
 
-build NeHe OpenGL Lessons with Qt 4
+build NeHe OpenGL tutorials in Qt4
 
 As Qt is cross-platform framework, so used freetype and ftgl in lesson13, lesson14, lesson15 to create font.
 
